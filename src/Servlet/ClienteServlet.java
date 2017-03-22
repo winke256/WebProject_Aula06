@@ -1,6 +1,7 @@
 package Servlet;
 
 import Model.Cliente;
+import Model.DAO.DAOFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,14 +12,31 @@ import java.io.IOException;
 
 public class ClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cliente c = new Cliente();
-        c.setName(request.getParameter("clienteName"));
-        c.setFone(request.getParameter("clienteFone"));
-        c.setMail(request.getParameter("clienteMail"));
 
-        //Send info to cliente.jsp
-        request.setAttribute("Cliente", c);
-        request.getRequestDispatcher("cliente.jsp").forward(request, response);
+        try{
+            int id = Integer.parseInt(request.getParameter("clienteID"));
+            String name = request.getParameter("clienteName");
+            String mail = request.getParameter("clienteMail");
+
+            Cliente cliente = new Cliente();
+            cliente.setId(id);
+            cliente.setName(name);
+            cliente.setMail(mail);
+
+            switch(request.getParameter("oQueFazer")){
+                case "Cadastrar":
+                    cliente.setId(0);
+                    DAOFactory.initClienteDAO().saveUpdate(cliente);
+                    request.setAttribute("Cliente", cliente);
+                    request.setAttribute("Acao", "Cadastrar");
+                    request.getRequestDispatcher("").forward(request, response);
+                    break;
+            }
+
+        }catch(Exception ex){
+            request.setAttribute("Exception", ex);
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
