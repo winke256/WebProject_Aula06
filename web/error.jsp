@@ -5,7 +5,7 @@
 </head>
 <body>
     <% out.println(((Exception)request.getAttribute("Exception")).getMessage());
-       out.println(((Exception)request.getAttribute("Exception")).getStackTrace());
+       out.println(((Exception)request.getAttribute("Exception")).getCause());
     %>
 </body>
 </html>

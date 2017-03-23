@@ -3,6 +3,11 @@
 <html>
 <head>
     <title>Cliente Information</title>
+    <script type="text/javascript">
+        function voltar(){
+            window.location.href='index.jsp';
+        }
+    </script>
 </head>
 <body>
     <h3>Information</h3>
@@ -15,5 +20,11 @@
                 break;
         }
     %>
+
+    <br>
+
+    <input type="button" name="Home" value="Home" onclick="voltar()">
+
+
 </body>
 </html>

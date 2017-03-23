@@ -4,6 +4,7 @@ import Model.Cliente;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Dictionary;
 import Enum.*;
 
@@ -15,13 +16,13 @@ public class ClienteDAOImpl extends DAOImpl<Cliente> implements ClienteDAO{
 
     @Override
     public Cliente save(Cliente cliente) throws Exception{
-        try(PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO tblCliente (nome, email) VALUES (?, ?)")){
+        try(PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO tblCliente (nome, email) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)){
             st.setString(1, cliente.getName());
             st.setString(2, cliente.getMail());
             st.executeUpdate();
             try(ResultSet rs = st.getGeneratedKeys()){
                 while(rs.next()){
-                    int id = rs.getInt("1");
+                    int id = rs.getInt(1);
                     if(id > 0){
                         cliente.setId(id);
                         return cliente;

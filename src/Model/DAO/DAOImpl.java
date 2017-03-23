@@ -39,9 +39,10 @@ public abstract class DAOImpl<T> implements DAO<T> {
 
     public abstract Dictionary<String, Object> parseToParameters(T t) throws Exception;
 
-    public Connection getConnection(){
+    public Connection getConnection() throws Exception{
         try {
-            return DriverManager.getConnection("jdbc:mysql://"+CONECTION_IP+"/"+getDatabase()+"", CONECTION_USER, CONECTION_PASS);
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection("jdbc:mysql://"+CONECTION_IP+"/"+getDatabase(), CONECTION_USER, CONECTION_PASS);
         }catch(SQLException ex){
             ex.printStackTrace();
         }
