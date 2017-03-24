@@ -1,9 +1,11 @@
 package Util;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Parser {
 
     public static <T extends Object>T parse(Object from, T defaultValue){
-        if(from == null) {
+        if(from == null || (from instanceof String && StringUtils.isEmpty(from.toString())) ) {
             return defaultValue;
         }
 

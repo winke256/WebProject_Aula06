@@ -1,30 +1,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="Model.Cliente" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Cliente Information</title>
-    <script type="text/javascript">
-        function voltar(){
-            window.location.href='index.jsp';
-        }
-    </script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <h3>Information</h3>
-    <% String acao = (String)request.getAttribute("Acao");
-       Cliente cliente = (Cliente)request.getAttribute("Cliente");
-        switch(acao){
-            case "Cadastrar":
-                out.println("Cliente cadastrado com sucesso.");
-                out.println("ID: "+cliente.getId());
-                break;
-        }
-    %>
 
-    <br>
+<!-- HEAD -->
+<div class="container">
+    <h1>Cliente information</h1>
+</div>
 
-    <input type="button" name="Home" value="Home" onclick="voltar()">
+<!-- BODY -->
+<div class="container">
+    <dl>
+        <dt>Cliente Information:</dt>
+        <dd>ID: ${Cliente.name}</dd>
+        <dd>Name: </dd>
 
+    </dl>
+</div>
+
+<!-- FOOTER -->
+<div class="container">
+    <button type="button" class="btn-default" name="btHome" onclick="window.location.href='index.jsp'" > Home </button>
+</div>
 
 </body>
 </html>
