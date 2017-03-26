@@ -12,6 +12,9 @@
     Mail: <input type="text" id="clienteMail" name="clienteMail"/><br/>
 
     <input type="submit" name="oQueFazer" value="Cadastrar" />
+    <input type="submit" name="oQueFazer" value="Deletar" />
+    <input type="submit" name="oQueFazer" value="Atualizar" />
+    <input type="submit" name="oQueFazer" value="Obter" />
 </form>
 </body>
 </html>

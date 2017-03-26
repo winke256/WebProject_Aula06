@@ -21,10 +21,33 @@
 <!-- BODY -->
 <div class="container">
     <dl>
-        <dt>Cliente Information:</dt>
-        <dd>ID: ${Cliente.name}</dd>
-        <dd>Name: </dd>
-
+        <c:choose>
+            <c:when test="${Acao == 'Cadastrar'}">
+                <dt class="alert-success">Information:</dt>
+                <dd>ID: ${Cliente.id}</dd>
+                <dd>Name: ${Cliente.name}</dd>
+            </c:when>
+            <c:when test="${Acao == 'Deletar'}">
+                <dt class="alert-success">Information:</dt>
+                <dd>Cliente deletado com sucesso.</dd>
+            </c:when>
+            <c:when test="${Acao == 'Atualizar'}">
+                <dt class="alert-success">Information:</dt>
+                <dd>ID: ${Cliente.id}</dd>
+                <dd>Name: ${Cliente.name}</dd>
+                <dd>Mail: ${Cliente.mail}</dd>
+            </c:when>
+            <c:when test="${Acao == 'Obter'}">
+                <dt class="alert-success">Information:</dt>
+                <dd>ID: ${Cliente.id}</dd>
+                <dd>Name: ${Cliente.name}</dd>
+                <dd>Mail: ${Cliente.mail}</dd>
+            </c:when>
+            <c:otherwise>
+                <dt class="alert-info">Information</dt>
+                <dd>Dont have any information</dd>
+            </c:otherwise>
+        </c:choose>
     </dl>
 </div>
 

@@ -4,6 +4,6 @@ import Model.Cliente;
 
 public interface ClienteDAO extends DAO<Cliente> {
 
-    Cliente getClienteByID(int id);
+    Cliente getClienteByID(int id) throws Exception;
 
 }
