@@ -2,6 +2,7 @@ package Servlet;
 
 import Model.Cliente;
 import Model.DAO.DAOFactory;
+import Util.Parser;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +15,7 @@ public class ClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try{
-            int id = 0;
-            try{ id = Integer.parseInt(request.getParameter("clienteID"));} catch(Exception ex){}
+            int id      = Parser.parse(request.getParameter("clienteID"), 0);
             String name = request.getParameter("clienteName");
             String mail = request.getParameter("clienteMail");
 

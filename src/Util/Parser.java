@@ -10,9 +10,9 @@ public class Parser {
         }
 
         try{
-            T t = from instanceof Integer ? (T)Integer.valueOf(from.toString()) :
-                  from instanceof Double  ? (T)Double.valueOf(from.toString()) :
-                  from instanceof String ? (T)String.valueOf(from.toString()) :
+            T t = defaultValue instanceof Integer ? (T)Integer.valueOf(from.toString()) :
+                  defaultValue instanceof Double  ? (T)Double.valueOf(from.toString()) :
+                  defaultValue instanceof String ? (T)String.valueOf(from.toString()) :
                   (T)from;
             return t;
         }
